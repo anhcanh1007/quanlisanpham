@@ -1,0 +1,20 @@
+/* thiết lập style cho thẻ a */
+.pagination a {
+    color: black;
+    float: left;
+    padding:  12px 18px;
+    text-decoration: none;
+  }
+ /* thiết lập style cho class active */
+  .pagination a.active {
+    background-color: dodgerblue;
+    color: white;
+    /*Thiết kế hình tròn với CSS*/
+    border-radius: 50%;
+  }
+ /* thêm màu nền khi người dùng hover vào class không active */
+  .pagination a:hover:not(.active) {
+    background-color: #ddd;
+    /*Thiết kế hình tròn với CSS*/
+    border-radius: 50%;
+  }
