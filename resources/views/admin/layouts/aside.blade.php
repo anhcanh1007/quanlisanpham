@@ -88,18 +88,13 @@
         </a>
         <ul class="menu-sub">
           <li class="menu-item">
-            <a href="pages-account-settings-account.html" class="menu-link">
-              <div data-i18n="Account">Account</div>
+            <a href="{{ route('add-account') }}" class="menu-link">
+              <div data-i18n="Account">Admin</div>
             </a>
           </li>
           <li class="menu-item">
-            <a href="pages-account-settings-notifications.html" class="menu-link">
-              <div data-i18n="Notifications">Notifications</div>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="pages-account-settings-connections.html" class="menu-link">
-              <div data-i18n="Connections">Connections</div>
+            <a href="{{ route('list-account') }}" class="menu-link">
+              <div data-i18n="Account">List admin</div>
             </a>
           </li>
         </ul>
@@ -143,6 +138,37 @@
           <li class="menu-item">
             <a href="{{ route('list_cate') }}" class="menu-link">
               <div data-i18n="Vertical Form">List Category</div>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="menu-item">
+        <a href="javascript:void(0);" class="menu-link menu-toggle">
+          <i class="menu-icon tf-icons bx bx-detail"></i>
+          <div data-i18n="Form Layouts">Product</div>
+        </a>
+        <ul class="menu-sub">
+          <li class="menu-item">
+            <a href="{{ route('list_product') }}" class="menu-link">
+              <div data-i18n="Vertical Form">List Product</div>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="{{ route('add_product') }}" class="menu-link">
+              <div data-i18n="Vertical Form">Add Product</div>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="menu-item">
+        <a href="javascript:void(0);" class="menu-link menu-toggle">
+          <i class="menu-icon tf-icons bx bx-detail"></i>
+          <div data-i18n="Form Layouts">User</div>
+        </a>
+        <ul class="menu-sub">
+          <li class="menu-item">
+            <a href="" class="menu-link">
+              <div data-i18n="Vertical Form">List User</div>
             </a>
           </li>
         </ul>

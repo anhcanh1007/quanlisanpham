@@ -20,4 +20,9 @@ class Admin extends Model
         'updated_id',
     ];
     use SoftDeletes;
+
+    public function roles()
+    {
+        return $this->hasMany(Role::class);
+    }
 }

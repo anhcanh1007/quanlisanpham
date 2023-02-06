@@ -82,7 +82,12 @@
     <div class="pagination">
     </div>
   </div>
+  @push('scripts')
+  <script src="{{ asset('admin/js/category/index.js') }}"></script>
+  @endpush
 @endsection
+
+
 
 
 

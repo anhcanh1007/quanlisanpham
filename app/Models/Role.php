@@ -18,4 +18,9 @@ class Role extends Model
         'updated_id',
     ];
     use SoftDeletes;
+
+    public function admin()
+    {
+        return $this->belongsTo(Admin::class);
+    }
 }

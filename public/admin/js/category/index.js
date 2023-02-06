@@ -16,9 +16,6 @@ $(document).ready(function(){
                 $('button[id^=page_]').removeClass('active');
 
                     if (addButton) {
-                        if (i === 1) {
-
-                        }
                         $('.pagination').append(
                             `<button class="nextbtn btn btn-primary" id="page_${i}">${i}</button>`
                         )
@@ -35,7 +32,6 @@ $(document).ready(function(){
                             </tr>`
                             )
                         })
-
                     }
                 }
             },

@@ -15,9 +15,20 @@ class Product extends Model
         'name',
         'price',
         'description',
+        'image',
         'category_id',
         'created_id',
         'updated_id',
     ];
     use SoftDeletes;
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function images()
+    {
+        return $this->hasMany(Image::class, 'product_id', 'id');
+    }
 }

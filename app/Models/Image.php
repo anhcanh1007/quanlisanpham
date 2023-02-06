@@ -19,4 +19,13 @@ class Image extends Model
         'updated_id',
     ];
     use SoftDeletes;
+    // public function setFilenamesAttribute($value)
+    // {
+    //     $this->attributes['name'] = json_encode($value);
+    // }
+
+    public function products()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }
