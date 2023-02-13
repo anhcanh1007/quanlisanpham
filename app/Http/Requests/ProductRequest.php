@@ -27,6 +27,7 @@ class ProductRequest extends FormRequest
             'name' => ['required', 'min:6', 'max:20'],
             'price' => ['required'],
             'description' => ['required', 'min:10', 'max:30'],
+            'category_id' => ['required'],
         ];
     }
 
@@ -40,6 +41,7 @@ class ProductRequest extends FormRequest
             'description.required' => "Mô tả không được để trống",
             'description.min' => "Mô tả phải dài hơn 10 ký tự",
             'description.max' => "Mô tả không được quá 30 ký tự",
+            'category_id' => "Danh mục sản phẩm không được để trống",
         ];
     }
 }

@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 @section('main')
 <div class="card" >
-    <form action="{{ route('add-product') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('add-product') }}" method="post" id="form-add-product" enctype="multipart/form-data">
         @csrf
         <div class="" id="form-add-product" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
             <div class="modal-dialog">
@@ -22,6 +22,12 @@
                     <input type="text" class="description form-control"  aria-label="Name" aria-describedby="basic-addon-name" name="description" required />
                     <span class="text-danger error-text title_error" id="errors"></span>
                 </div>
+                {{-- <div id="tagsContainer">
+                    <input type="text" id="tagInput" name="tag_name">
+                    <button id="addTagButton">Add Tag</button>
+                  </div> --}}
+
+
                 <div class="mb-1">
                     <label class="form-label fs-5 fw-bolder" for="basic-addon-name">Nhập tag</label>
                     <input type="text" class="description form-control"  aria-label="Name" aria-describedby="basic-addon-name" name="tag_name" required />
@@ -56,6 +62,32 @@
 </form>
 
 </div>
+
 @push('scripts')
+{{-- <script src="{{ asset('/admin/js/product/index.js') }}"></script> --}}
 @endpush
+@endsection
+
+@section('scripts')
+<script>
+    const tagsContainer = document.getElementById('tagsContainer');
+    const tagInput = document.getElementById('tagInput');
+    const addTagButton = document.getElementById('addTagButton');
+
+    addTagButton.addEventListener('click', function() {
+      const tags = tagInput.value.split(',');
+      console.log(tags);
+      if (!tags) return;
+
+    //   tags.forEach(function(tag) {
+    //     const tagElement = document.createElement('span');
+    //     tagElement.innerHTML = tag;
+    //     tagElement.classList.add('tag');
+
+    //     tagsContainer.appendChild(tagElement);
+    //   });
+
+      tagInput.value = '';
+    });
+  </script>
 @endsection

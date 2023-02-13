@@ -44,9 +44,15 @@ Route::prefix('/qladmin')->group(function () {
         Route::get('/list', [ProductController::class, 'index'])->name('list_product');
         Route::get('/create', [ProductController::class, 'showAdd'])->name('add_product');
         Route::get('/delete/{id}', [ProductController::class, 'destroy']);
-        Route::get('/edit/{id}', [ProductController::class, 'edit']);
-        Route::post('/update/{id}', [ProductController::class, 'update']);
+        Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('edit-product');
+        Route::post('/update', [ProductController::class, 'update'])->name('update-product');
         Route::get('/images/{id}', [ProductController::class, 'getImages']);
+    });
+    Route::prefix('/images')->group(function () {
+        Route::get('/delete/{id}', [ProductController::class, 'deleteImageGallery'])->name('delete-imageGallery');
+    });
+    Route::prefix('/tags')->group(function () {
+        Route::get('/delete/{id}', [ProductController::class, 'deleteTag'])->name('delete-tag');
     });
     Route::prefix('/tag')->group(function () {
         Route::get('/list', [TagController::class, 'index']);

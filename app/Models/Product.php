@@ -31,4 +31,14 @@ class Product extends Model
     {
         return $this->hasMany(Image::class, 'product_id', 'id');
     }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'product_tag', 'product_id', 'tag_id');
+    }
+
+    public function product_tags()
+    {
+        return $this->hasMany(Product_Tag::class);
+    }
 }

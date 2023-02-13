@@ -16,6 +16,7 @@
             <th>Price</th>
             <th>Description</th>
             <th>Image</th>
+            <td>Tag</td>
             <th>Category</th>
             <th colspan="3">Actions</th>
           </tr>
@@ -25,9 +26,14 @@
             <tr>
                 <td>{{ $item->id }}</td>
                 <td>{{ $item->name }}</td>
-                <td>{{ $item->price }}</td>
+                <td>{{ number_format($item->price) }} $</td>
                 <td>{{ $item->description }}</td>
-                <td><img src="{{ asset('/images/'.$item->image) }}" alt="" width="50px" height="50px"></td>
+                <td><img src="{{ asset('/storage/product/'.$item->image) }}" alt="" width="50px" height="50px"></td>
+                <td>
+                @foreach ($item->tags as $tag )
+                <li>{{ $tag->name }}</li>
+                @endforeach
+                </td>
                 <td>{{ $item->category->name }}</td>
                 <td><a href="{{ url('qladmin/product/images',[$item->id]) }}"><button type="button" class="btn btn-primary">Xem</button></a></td>
                 <td><a href="{{ url('qladmin/product/edit',[$item->id]) }}"><button type="button" class="btn btn-primary">Edit</button></a></td>

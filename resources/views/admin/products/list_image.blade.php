@@ -19,9 +19,9 @@
         <tbody class="table-border-bottom-0">
             <tr>
                 <td>{{ $product->id }}</td>
-                <td><img src="{{ asset('/images/'.$product->image) }}" alt="" width="100" height="100"></td>
+                <td><img src="{{ asset('/storage/product/'.$product->image) }}" alt="" width="100" height="100"></td>
                 @foreach ($product->images as $item )
-                    <td><img src="{{ asset('/images/'.$item->name) }}" alt="" width="100" height="100"></td>
+                    <td><img src="{{ asset('/storage/product/'.$item->name) }}" alt="" width="100" height="100"></td>
                 @endforeach
             </tr>
         </tbody>

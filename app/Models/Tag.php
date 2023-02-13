@@ -18,4 +18,9 @@ class Tag extends Model
         'updated_id',
     ];
     use SoftDeletes;
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'product_tag', 'tag_id', 'product_id');
+    }
 }

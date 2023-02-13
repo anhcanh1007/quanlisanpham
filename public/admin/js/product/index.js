@@ -8,15 +8,10 @@ $(document).ready(function ()
     })
 
     //add product
-    $('#create_product').on('click', function()
+    $('#form-add-product').submit(function(e)
     {
-        let data = {
-            'name' : $('.name').val(),
-            'price' : $('.price').val(),
-            'image' : $('.image').val(),
-            'description' : $('.description').val(),
-            'category_id' : $('.category_id').val(),
-        }
+        e.preventDefault();
+        var data = new FormData(this);
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -27,7 +22,8 @@ $(document).ready(function ()
             type: "POST",
             url: "/api/product/add",
             data: data,
-            dataType: "json",
+            contentType: false,
+            processData: false,
             success: function (response) {
                 console.log(response);
                 $('#form-add-product').modal('hide');
