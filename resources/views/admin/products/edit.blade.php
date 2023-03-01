@@ -69,6 +69,7 @@
             <div class="col-md-12">
                 <div class="card mb-4">
                   <h5 class="card-header">Thư viện ảnh</h5>
+                  <div class="card-body">
                     <div class="mb-3" >
                         {{-- <form action="" enctype="multipart/form-data" id="form-edit-imageGallery"> --}}
                             @foreach ($pro->images as $item)
@@ -77,7 +78,7 @@
                                         <img src="{{ asset('/storage/product/'.$item->name) }}" alt="" width="100px" height="100px">
                                     </div>
                                     <div class="col-md-3 mb-3">
-                                        <a href="{{ route('delete-imageGallery',[$item->id]) }}"><button type="button" class="btn btn-primary" id="btn-del-image">Del</button></a>
+                                        <a href="{{ route('delete-image-gallery',[$item->id]) }}"><button type="button" class="btn btn-primary" id="btn-del-image">Del</button></a>
                                     </div>
                                 </div>
                             @endforeach
@@ -87,7 +88,7 @@
                             <input type="file" class="form-control" name="newImageGallery[]" multiple="true">
                         </div>
                     </div>
-
+                </div>
                 </div>
             </div>
 
@@ -95,8 +96,9 @@
           <div class="col-md-12">
             <div class="card mb-4">
               <h5 class="card-header">Tag</h5>
+              <div class="card-body">
               <div class="mb-3" >
-                <label for="" class="form-control">Tên tag</label>
+                <label for="" class="form-label">Tên tag</label>
                 @foreach ($pro->tags as $tag)
                 <div style="display: flex;align-items: center;">
                     <div class="col-md-3 ml-10">
@@ -112,6 +114,7 @@
                     <input type="text" name="tag_name" class="form-control">
                 </div>
             </div>
+        </div>
             </div>
             </div>
             <div>

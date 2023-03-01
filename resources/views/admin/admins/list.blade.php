@@ -27,9 +27,9 @@
                 <td>{{ $item->name }}</td>
                 <td>{{ $item->email }}</td>
                 <td><img src="{{ asset('/images/account/'.$item->image) }}" alt="" width="50px" height="50px"></td>
-                <td><a href="{{ url('qladmin/account/edit',[$item->id]) }}"><button type="button" class="btn btn-primary">Edit</button></a></td>
-                <td><a href="{{ url('qladmin/account/delete',[$item->id]) }}"><button type="button" class="btn btn-primary">Delete</button></a></td>
-                <td><a href="{{ url('qladmin/role/add',[$item->id]) }}"><button type="button" value="{{ $item->id }}" class="btn btn-primary" id="">Add Role</button></a></td>
+                <td><a href="{{ route('delete-account',[$item->id]) }}"><button type="button" class="btn btn-primary">Edit</button></a></td>
+                <td><a href="{{ route('delete-account',[$item->id]) }}"><button type="button" class="btn btn-primary">Delete</button></a></td>
+                <td><a href="{{ route('delete-account',[$item->id]) }}"><button type="button" value="{{ $item->id }}" class="btn btn-primary" id="">Add Role</button></a></td>
             </tr>
             @endforeach
         </tbody>

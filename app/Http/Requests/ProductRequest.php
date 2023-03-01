@@ -28,6 +28,7 @@ class ProductRequest extends FormRequest
             'price' => ['required'],
             'description' => ['required', 'min:10', 'max:30'],
             'category_id' => ['required'],
+            'file_upload' => ['mimes:jpg,bmp,png', 'max:5120000'],
         ];
     }
 
@@ -44,4 +45,12 @@ class ProductRequest extends FormRequest
             'category_id' => "Danh mục sản phẩm không được để trống",
         ];
     }
+
+    // public function withValidator($validator)
+    // {
+    //     if ($validator->fails()) {
+    //         dd($validator);
+    //     } else {
+    //     }
+    // }
 }

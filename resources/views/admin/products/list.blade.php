@@ -2,13 +2,12 @@
 @section('main')
 <div class="card" >
     <h5 class="card-header">Table Dark</h5>
-
     <br>
     <div>
         <h3 class="alert-success" id="alert"></h3>
     </div>
     <div class="table-responsive text-nowrap">
-      <table class="table table-dark">
+      <table class="table table">
         <thead>
           <tr>
             <th>#</th>
@@ -30,32 +29,27 @@
                 <td>{{ $item->description }}</td>
                 <td><img src="{{ asset('/storage/product/'.$item->image) }}" alt="" width="50px" height="50px"></td>
                 <td>
-                @foreach ($item->tags as $tag )
+                @foreach ($item->tags as $tag)
                 <li>{{ $tag->name }}</li>
                 @endforeach
                 </td>
                 <td>{{ $item->category->name }}</td>
-                <td><a href="{{ url('qladmin/product/images',[$item->id]) }}"><button type="button" class="btn btn-primary">Xem</button></a></td>
-                <td><a href="{{ url('qladmin/product/edit',[$item->id]) }}"><button type="button" class="btn btn-primary">Edit</button></a></td>
-                <td><a href="{{ url('qladmin/product/delete',[$item->id]) }}"><button type="button" class="btn btn-primary">Delete</button></a></td>
+                <td><a href="{{ route('see-image-gallery',[$item->id]) }}"><button type="button" class="btn btn-primary">Xem</button></a></td>
+                <td><a href="{{ route('edit-product',[$item->id]) }}"><button type="button" class="btn btn-primary">Edit</button></a></td>
+                <td><a href="{{ route('delete-product',[$item->id]) }}"><button type="button" class="btn btn-primary">Delete</button></a></td>
             </tr>
             @endforeach
         </tbody>
       </table>
     </div>
     <hr>
-    {{-- start form add product --}}
-
-    {{-- end form add product --}}
-
-     {{-- start form edit cate --}}
-
-    {{-- end form edit cate --}}
-
-    {{-- start delete record --}}
-
-    {{-- end delete record --}}
-    <div class="pagination">
+    <div class="row">
+        {{-- <div class="col-md-12">
+            <div class="text-center">
+                {{ $pro->render('admin.paginate.index') }}
+            </div>
+        </div> --}}
+        {{ $pro->links() }}
     </div>
   </div>
   @push('scripts')

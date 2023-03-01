@@ -3,6 +3,8 @@
 use App\Http\ApiController\CategoryController;
 use App\Http\ApiController\ProductController;
 use App\Http\ApiController\TagController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AuthSanctumController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use PhpParser\Node\Expr\FuncCall;
@@ -42,3 +44,19 @@ Route::prefix('/tag')->group(function () {
     Route::put('/update/{id}', [TagController::class, 'update']);
     Route::delete('/delete/{id}', [TagController::class, 'destroy']);
 });
+
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'auth'
+
+], function ($router) {
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/register', [AuthController::class, 'register']);
+    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::post('/refresh', [AuthController::class, 'refresh']);
+    Route::get('/user-profile', [AuthController::class, 'userProfile']);
+    Route::post('/change-pass', [AuthController::class, 'changePassWord']);
+});
+
+Route::post('/login', [AuthSanctumController::class, 'login'])->name('api-login');
+Route::post('/register', [AuthSanctumController::class, 'register'])->name('api-register');

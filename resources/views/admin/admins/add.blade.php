@@ -3,9 +3,8 @@
 <div class="card" >
     <form action="{{ route('store-account') }}" method="post" enctype="multipart/form-data">
         @csrf
-        <div class="" id="form-add-product" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
-            <div class="modal-dialog">
-            <div class="modal-content">
+        <div class="col-sm-6" id="form-add-product" >
+            <div class="card-body">
                 <div class="mb-1">
                     <label class="form-label fs-5 fw-bolder" for="basic-addon-name">Nhập tên</label>
                     <input type="text" class="name form-control"  aria-label="Name" aria-describedby="basic-addon-name" name="name" required />
@@ -26,14 +25,11 @@
                     <input type="file" class="image form-control"  aria-label="Name" aria-describedby="basic-addon-name" name="file_upload" required />
                     <span class="text-danger error-text title_error" id="errors"></span>
                 </div>
-
-                <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary" id="create_product">Add Account </button>
                 </div>
             </div>
-            </div>
-        </div>
+
 </form>
 
 </div>

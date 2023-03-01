@@ -1,14 +1,11 @@
 @extends('admin.layouts.master')
 @section('main')
 <div class="card" >
-    <h5 class="card-header">Table Dark</h5>
-
-    <br>
     <div>
         <h3 class="alert-success" id="alert"></h3>
     </div>
     <div class="table-responsive text-nowrap">
-      <table class="table table-dark">
+      <table class="table table-white">
         <thead>
           <tr>
             <th>#</th>

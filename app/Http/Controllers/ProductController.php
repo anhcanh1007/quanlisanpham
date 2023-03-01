@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\Product_Tag;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use SebastianBergmann\CodeUnit\FunctionUnit;
 
@@ -16,22 +17,28 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $pro = Product::with('category', 'tags')->orderBy('products.id')->get();
+        $pro = Product::with('category', 'tags')->orderBy('products.id')->paginate(3);
 
         return view('admin.products.list', compact('pro'));
     }
     public function showAdd()
     {
         $cate = Category::all();
-
-        return view('admin.products.create', compact('cate'));
+        if (auth()->user()->can('create', Product::class)) {
+            return view('admin.products.create', compact('cate'));
+        } else {
+            return view('admin.errors.403');
+        }
     }
     public function destroy($id)
     {
         $pro = Product::find($id);
         $pro->delete();
-
-        return redirect()->route('list_product');
+        if (auth()->user()->can('delete', $pro)) {
+            return redirect()->route('list_product');
+        } else {
+            return view('admin.errors.403');
+        }
     }
 
 
@@ -45,54 +52,60 @@ class ProductController extends Controller
     {
         $cate = Category::all();
         $pro = Product::with('images', 'tags')->where('products.id', $id)->first();
-        return view('admin.products.edit', compact('pro', 'cate'));
+        if (Auth::user()->can('update', $pro)) {
+            return view('admin.products.edit', compact('pro', 'cate'));
+        } else {
+            return view('admin.errors.403');
+        }
     }
 
 
     public function update(Request $request)
     {
-        //update product
         $pro = Product::with('tags', 'images', 'product_tags')->where('products.id', $request->id)->first();
         // dd($pro);
         if ($request->has('file_upload')) {
             // dd($pro);
             $file = $request->file_upload;
-            $nameImg = $file->hashName();
+            $name_img = $file->hashName();
             $path = Storage::put('public/product', $file, 'public');
             $pro->name = $request['name'];
             $pro->price = $request['price'];
             $pro->description = $request['description'];
-            $pro->image = $nameImg;
+            $pro->image = $name_img;
             $pro->category_id = $request['category_id'];
             $pro->update();
         }
         //update tag
-        $tagName = ($request['tag_name']);
-        $tagNew = explode(',', $tagName);
-        foreach ($tagNew as $tag_name) {
-            $tagUpdate = new Tag();
-            $tagUpdate->name = $tag_name;
-            $tagUpdate->save();
+        $tag_name = ($request['tag_name']);
+        $tag_new = explode(',', $tag_name);
+        foreach ($tag_new as $tag_name) {
+            $tag_update = new Tag();
+            $tag_update->name = $tag_name;
+            $tag_update->save();
 
             $product_tag = new Product_Tag();
             $product_tag->product_id = $pro->id;
-            $product_tag->tag_id = $tagUpdate->id;
+            $product_tag->tag_id = $tag_update->id;
             $product_tag->save();
         }
 
         //upload thu vien anh
         if ($request->has('newImageGallery')) {
-            foreach ($request['newImageGallery'] as $newfile) {
-                $newImage = new Image();
-                $newName = $newfile->hashName();
-                $path = Storage::put('public/product', $newfile, 'public');
-                $newImage->name = $newName;
-                $newImage->is_main_image = 0;
-                $newImage->product_id = $pro->id;
-                $newImage->save();
+            foreach ($request['newImageGallery'] as $new_file) {
+                $image_new = new Image();
+                $new_name = $new_file->hashName();
+                $path = Storage::put('public/product', $new_file, 'public');
+                $image_new->name = $new_name;
+                $image_new->is_main_image = 0;
+                $image_new->product_id = $pro->id;
+                $image_new->save();
             }
         }
         return response()->json(['adad' => 'sdad']);
+
+        //update product
+
         // $pro->update($request->all());
 
         // return redirect()->route('list_product');
@@ -117,10 +130,10 @@ class ProductController extends Controller
         // $tag = Tag::find($id);
         $tag = Tag::with('products')->where('tags.id', $id)->first();
         foreach ($tag->products as $pro) {
-            $proId = $pro->id;
+            $pro_id = $pro->id;
         }
         // dd($tag);
         $tag->delete();
-        return redirect()->route('edit-product', $proId);
+        return redirect()->route('edit-product', $pro_id);
     }
 }

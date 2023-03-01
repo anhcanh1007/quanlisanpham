@@ -88,36 +88,13 @@
         </a>
         <ul class="menu-sub">
           <li class="menu-item">
-            <a href="{{ route('add-account') }}" class="menu-link">
+            <a href="{{ route('create-account') }}" class="menu-link">
               <div data-i18n="Account">Admin</div>
             </a>
           </li>
           <li class="menu-item">
             <a href="{{ route('list-account') }}" class="menu-link">
               <div data-i18n="Account">List admin</div>
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li class="menu-item">
-        <a href="javascript:void(0);" class="menu-link menu-toggle">
-          <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
-          <div data-i18n="Authentications">Authentications</div>
-        </a>
-        <ul class="menu-sub">
-          <li class="menu-item">
-            <a href="auth-login-basic.html" class="menu-link" target="_blank">
-              <div data-i18n="Basic">Login</div>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="auth-register-basic.html" class="menu-link" target="_blank">
-              <div data-i18n="Basic">Register</div>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="auth-forgot-password-basic.html" class="menu-link" target="_blank">
-              <div data-i18n="Basic">Forgot Password</div>
             </a>
           </li>
         </ul>
@@ -149,12 +126,12 @@
         </a>
         <ul class="menu-sub">
           <li class="menu-item">
-            <a href="{{ route('list_product') }}" class="menu-link">
+            <a href="{{ route('list-product') }}" class="menu-link">
               <div data-i18n="Vertical Form">List Product</div>
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('add_product') }}" class="menu-link">
+            <a href="{{ route('create-product') }}" class="menu-link">
               <div data-i18n="Vertical Form">Add Product</div>
             </a>
           </li>
@@ -167,7 +144,7 @@
         </a>
         <ul class="menu-sub">
           <li class="menu-item">
-            <a href="" class="menu-link">
+            <a href="{{ route('list-user') }}" class="menu-link">
               <div data-i18n="Vertical Form">List User</div>
             </a>
           </li>

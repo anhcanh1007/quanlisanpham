@@ -13,5 +13,10 @@
                 </div>
             </div>
         </div>
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <a href="{{ route('main') }}">
+                <button type="button" class="btn btn-primary">Visit Admin</button>
+            </a>
+        </div>
     </div>
 </x-app-layout>

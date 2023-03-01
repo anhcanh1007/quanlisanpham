@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\UsersExport;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use Illuminate\Http\Request;
+
+
 
 class AdminAcountController extends Controller
 {
@@ -39,4 +42,6 @@ class AdminAcountController extends Controller
         $acc->delete();
         return redirect()->route('list-account');
     }
+
+
 }
